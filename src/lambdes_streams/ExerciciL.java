@@ -42,7 +42,7 @@ public class ExerciciL {
         for(Persona p: llista_persones) {
             System.out.println(p);
         }
-        List.of(llista_persones).forEach(personas -> System.out.println(personas));
+        List.of(lpers).forEach(personas -> System.out.println(personas));
 
         // 3 - Canvia a classe anònima
         System.out.println("\n3-4");
@@ -115,7 +115,8 @@ public class ExerciciL {
         llista_persones.stream().map(persona -> persona.getDataNaixament().plusDays(2)).forEach(System.out::println);
         //13 - Rejovenir dos anys a totes les persones
         System.out.println("\n13 - Rejovenir dos anys a totes les persones");
-        llista_persones.stream().map(persona -> persona.getDataNaixament().minusYears(2)).forEach(System.out::println);
+        llista_persones.stream().forEach(persona -> persona.setDataNaixament(persona.getDataNaixament().plusYears(2)));
+        llista_persones.stream().forEach(System.out::println);
 
 
     }
