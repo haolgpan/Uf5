@@ -3,6 +3,7 @@ package lambdes_streams;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class ExerciciL {
 
@@ -34,27 +35,38 @@ public class ExerciciL {
                 else return -1;
             }
         });
+        Collections.sort(llista_persones,(Persona o1, Persona o2) -> p1.getNom().compareTo(p2.getNom()));
 
         // 2 - Canviar a Lambda
         for(Persona p: llista_persones) {
             System.out.println(p);
         }
+        List.of(llista_persones).forEach(personas -> System.out.println(personas));
 
         // 3 - Canvia a classe anònima
         System.out.println("\n3-4");
         //ordenació alfabètica inversa del nom
             llista_persones.sort((o1,o2) -> o2.getNom().compareTo(o1.getNom()));
+            Collections.sort(llista_persones, new Comparator<Persona>() {
+                @Override
+                public int compare(Persona o1, Persona o2) {
+                    return o2.getNom().compareTo(o1.getNom());
+                }
+            });
 
         // 4 - Canvia per una crida al mètode per referència
         for(Persona p: llista_persones) {
             System.out.println(p);
         };
+        llista_persones.forEach(System.out::println);
+
 
 
         // 5 - Omplir map. Canviar per un forEach amb lambda
         for(Persona per : llista_persones) {
             mapPersones.put(per.getAge(),1);
         }
+        llista_persones.forEach((Persona p) -> mapPersones.put(p.getAge(), 1));
 
         // 6 - Canvia per un recorregut forEach amb lambda
         System.out.println("\n5");
