@@ -36,13 +36,14 @@ public class ExerciciL {
                 else return -1;
             }
         });
-        Collections.sort(llista_persones,(Persona o1, Persona o2) -> p1.getNom().compareTo(p2.getNom()));
+        Collections.sort(llista_persones,(Persona o1, Persona o2) -> o1.getNom().compareTo(o2.getNom()));
 
         // 2 - Canviar a Lambda
         for(Persona p: llista_persones) {
             System.out.println(p);
         }
-        List.of(lpers).forEach(personas -> System.out.println(personas));
+        llista_persones.forEach(personas -> System.out.println(personas));
+        System.out.println("---------------------------------------------");
 
         // 3 - Canvia a classe anònima
         System.out.println("\n3-4");
@@ -60,8 +61,6 @@ public class ExerciciL {
             System.out.println(p);
         };
         llista_persones.forEach(System.out::println);
-
-
 
         // 5 - Omplir map. Canviar per un forEach amb lambda
         for(Persona per : llista_persones) {
