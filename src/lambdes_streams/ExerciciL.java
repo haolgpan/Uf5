@@ -97,6 +97,8 @@ public class ExerciciL {
                 15 anys -> 1
 
          */
+        llista_persones.stream().map(persona -> mapPersones.put(persona.getAge(),1));
+        mapPersones.computeIfAbsent(mapPersones., )
 
 
         // 8 - llistat de persones DONA amb lambda (stream)
