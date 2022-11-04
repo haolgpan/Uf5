@@ -73,6 +73,7 @@ public class ExerciciL {
         for(Map.Entry entry : mapPersones.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+        mapPersones.forEach((K,V) -> System.out.println(K + " : " + V));
 
 
 
