@@ -112,9 +112,10 @@ public class ExerciciL {
         llista_persones.stream().filter(persona -> persona.getNom().contains("a")).forEach(System.out::println);
         //12 - Llistat de les dates de naixament + dos dies
         System.out.println("\n12 - dates amb dos dies més");
-
+        llista_persones.stream().map(persona -> persona.getDataNaixament().plusDays(2)).forEach(System.out::println);
         //13 - Rejovenir dos anys a totes les persones
         System.out.println("\n13 - Rejovenir dos anys a totes les persones");
+        llista_persones.stream().map(persona -> persona.getDataNaixament().minusYears(2)).forEach(System.out::println);
 
 
     }
