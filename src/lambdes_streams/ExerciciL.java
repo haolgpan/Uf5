@@ -3,6 +3,7 @@ package lambdes_streams;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ExerciciL {
@@ -100,11 +101,12 @@ public class ExerciciL {
 
 
         // 8 - llistat de persones DONA amb lambda (stream)
-
+        //Stream.of(llista_persones).filter((personas -> personas.))
+        llista_persones.stream().filter(persona -> persona.getGenere().equals(Persona.Genere.DONA)).forEach(System.out::println);
         // 9 - Llistat dels dos HOMES més joves (stream)
-
+        llista_persones.stream().sorted(Comparator.comparingInt(Persona::getAge)).filter(persona -> persona.getGenere().equals(Persona.Genere.HOME)).limit(2).forEach(System.out::println);
         // 10- Esborrar (no filtrar o imprimir) del llistat les persones entre 30 i 40 anys (amb lambda)
-
+        llista_persones.removeIf(persona -> persona.getAge() <= 40 && persona.getAge() >= 30);
         // 11 - Persones que tinguin una 'a' al seu nom
         System.out.println("\n11 Amb una 'A'");
 
