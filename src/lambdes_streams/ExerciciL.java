@@ -109,10 +109,9 @@ public class ExerciciL {
         llista_persones.removeIf(persona -> persona.getAge() <= 40 && persona.getAge() >= 30);
         // 11 - Persones que tinguin una 'a' al seu nom
         System.out.println("\n11 Amb una 'A'");
-
+        llista_persones.stream().filter(persona -> persona.getNom().contains("a")).forEach(System.out::println);
         //12 - Llistat de les dates de naixament + dos dies
         System.out.println("\n12 - dates amb dos dies més");
-
 
         //13 - Rejovenir dos anys a totes les persones
         System.out.println("\n13 - Rejovenir dos anys a totes les persones");
