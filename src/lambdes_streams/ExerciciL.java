@@ -104,9 +104,11 @@ public class ExerciciL {
             anys.computeIfPresent(per.getAge(), (key, value) -> value + 1);
             anys.putIfAbsent(per.getAge(), 1);
         }
-        /*llista_persones.forEach((Persona p) -> mapPersones.put(p.getAge(), 1));
-         */
-        llista_persones.stream().peek(anys.computeIfPresent(mapPersones.containsKey(Persona::getAge), (key,value) -> value +1)).forEach(anys.putIfAbsent((Persona::getAge),1));
+
+        llista_persones.forEach((Persona p) -> {
+            anys.computeIfPresent(p.getAge(), (key, value) -> value + 1);
+            anys.putIfAbsent(p.getAge(), 1);
+        });
         System.out.println("--------------------------");
         anys.forEach((K,V) -> System.out.println(K + " anys ->  " + V));
 
