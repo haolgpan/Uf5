@@ -99,24 +99,14 @@ public class ExerciciL {
                 15 anys -> 1
 
          */
-        /*System.out.println("-----------------------");
-        llista_persones.stream().map(persona -> mapPersones.putIfAbsent(persona.getAge(),1));
-        System.out.println(mapPersones);
-        System.out.println("-----------------------");
-        llista_persones.stream().map(persona -> mapPersones.computeIfAbsent(persona.getAge(),key -> 1));
-        System.out.println(mapPersones);
-        System.out.println("-----------------------");
-        llista_persones.forEach((Persona p) -> mapPersones.putIfAbsent(p.getAge(), 1));
-        System.out.println(mapPersones);
-        llista_persones.forEach(persona -> mapPersones.computeIfPresent(persona.getAge(),(key, value)  -> value +1));
-        mapPersones.forEach((K,V) -> System.out.println(K + " anys ->  " + V));*/
+
         Map<Integer,Integer> anys = new HashMap<>();
         for(Persona per : llista_persones) {
             anys.computeIfPresent(per.getAge(), (key, value) -> value + 1);
             anys.putIfAbsent(per.getAge(), 1);
         }
         System.out.println("--------------------------");
-        mapPersones.forEach((K,V) -> System.out.println(K + " anys ->  " + V));
+        anys.forEach((K,V) -> System.out.println(K + " anys ->  " + V));
 
 
         // 8 - llistat de persones DONA amb lambda (stream)
