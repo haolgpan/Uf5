@@ -49,14 +49,13 @@ public class ExerciciL {
         // 3 - Canvia a classe anònima
         System.out.println("\n3-4");
         //ordenació alfabètica inversa del nom
-            llista_persones.sort((o1,o2) -> o2.getNom().compareTo(o1.getNom()));
             Collections.sort(llista_persones, new Comparator<Persona>() {
                 @Override
                 public int compare(Persona o1, Persona o2) {
                     return o2.getNom().compareTo(o1.getNom());
                 }
             });
-
+        llista_persones.sort((o1,o2) -> o2.getNom().compareTo(o1.getNom()));
         // 4 - Canvia per una crida al mètode per referència
         for(Persona p: llista_persones) {
             System.out.println(p);
@@ -105,6 +104,9 @@ public class ExerciciL {
             anys.computeIfPresent(per.getAge(), (key, value) -> value + 1);
             anys.putIfAbsent(per.getAge(), 1);
         }
+        /*llista_persones.forEach((Persona p) -> mapPersones.put(p.getAge(), 1));
+         */
+        llista_persones.stream().peek(anys.computeIfPresent(mapPersones.containsKey(Persona::getAge), (key,value) -> value +1)).forEach(anys.putIfAbsent((Persona::getAge),1));
         System.out.println("--------------------------");
         anys.forEach((K,V) -> System.out.println(K + " anys ->  " + V));
 
@@ -126,8 +128,6 @@ public class ExerciciL {
         System.out.println("\n13 - Rejovenir dos anys a totes les persones");
         llista_persones.stream().forEach(persona -> persona.setDataNaixament(persona.getDataNaixament().plusYears(2)));
         llista_persones.stream().forEach(System.out::println);
-
-
     }
 
 
