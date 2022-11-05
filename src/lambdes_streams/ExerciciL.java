@@ -100,11 +100,12 @@ public class ExerciciL {
          */
 
         Map<Integer,Integer> anys = new HashMap<>();
+        /*Frequencia sense lambda
         for(Persona per : llista_persones) {
             anys.computeIfPresent(per.getAge(), (key, value) -> value + 1);
             anys.putIfAbsent(per.getAge(), 1);
-        }
-
+        }*/
+        //Amb lambda
         llista_persones.forEach((Persona p) -> {
             anys.computeIfPresent(p.getAge(), (key, value) -> value + 1);
             anys.putIfAbsent(p.getAge(), 1);
