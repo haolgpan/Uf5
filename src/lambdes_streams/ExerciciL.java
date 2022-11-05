@@ -3,6 +3,7 @@ package lambdes_streams;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -73,6 +74,7 @@ public class ExerciciL {
         for(Map.Entry entry : mapPersones.entrySet()) {
             System.out.println(entry.getKey() + " : " + entry.getValue());
         }
+        System.out.println("-------------------------------");
         mapPersones.forEach((K,V) -> System.out.println(K + " : " + V));
 
 
@@ -97,8 +99,24 @@ public class ExerciciL {
                 15 anys -> 1
 
          */
-        llista_persones.stream().map(persona -> mapPersones.put(persona.getAge(),1));
-        mapPersones.computeIfAbsent(mapPersones., )
+        /*System.out.println("-----------------------");
+        llista_persones.stream().map(persona -> mapPersones.putIfAbsent(persona.getAge(),1));
+        System.out.println(mapPersones);
+        System.out.println("-----------------------");
+        llista_persones.stream().map(persona -> mapPersones.computeIfAbsent(persona.getAge(),key -> 1));
+        System.out.println(mapPersones);
+        System.out.println("-----------------------");
+        llista_persones.forEach((Persona p) -> mapPersones.putIfAbsent(p.getAge(), 1));
+        System.out.println(mapPersones);
+        llista_persones.forEach(persona -> mapPersones.computeIfPresent(persona.getAge(),(key, value)  -> value +1));
+        mapPersones.forEach((K,V) -> System.out.println(K + " anys ->  " + V));*/
+        Map<Integer,Integer> anys = new HashMap<>();
+        for(Persona per : llista_persones) {
+            anys.computeIfPresent(per.getAge(), (key, value) -> value + 1);
+            anys.putIfAbsent(per.getAge(), 1);
+        }
+        System.out.println("--------------------------");
+        mapPersones.forEach((K,V) -> System.out.println(K + " anys ->  " + V));
 
 
         // 8 - llistat de persones DONA amb lambda (stream)
