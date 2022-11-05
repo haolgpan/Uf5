@@ -43,6 +43,7 @@ public class ExerciciL {
         for(Persona p: llista_persones) {
             System.out.println(p);
         }
+        System.out.println("---------------------------------------------");
         llista_persones.forEach(personas -> System.out.println(personas));
         System.out.println("---------------------------------------------");
 
@@ -60,7 +61,9 @@ public class ExerciciL {
         for(Persona p: llista_persones) {
             System.out.println(p);
         };
+        System.out.println("---------------------------------------------");
         llista_persones.forEach(System.out::println);
+        System.out.println("---------------------------------------------");
 
         // 5 - Omplir map. Canviar per un forEach amb lambda
         for(Persona per : llista_persones) {
@@ -115,20 +118,30 @@ public class ExerciciL {
 
 
         // 8 - llistat de persones DONA amb lambda (stream)
-        //Stream.of(llista_persones).filter((personas -> personas.))
+        System.out.println("---------------------------------------------");
         llista_persones.stream().filter(persona -> persona.getGenere().equals(Persona.Genere.DONA)).forEach(System.out::println);
         // 9 - Llistat dels dos HOMES més joves (stream)
+        System.out.println("---------------------------------------------");
         llista_persones.stream().sorted(Comparator.comparingInt(Persona::getAge)).filter(persona -> persona.getGenere().equals(Persona.Genere.HOME)).limit(2).forEach(System.out::println);
         // 10- Esborrar (no filtrar o imprimir) del llistat les persones entre 30 i 40 anys (amb lambda)
         llista_persones.removeIf(persona -> persona.getAge() <= 40 && persona.getAge() >= 30);
         // 11 - Persones que tinguin una 'a' al seu nom
+        System.out.println("---------------------------------------------");
         System.out.println("\n11 Amb una 'A'");
         llista_persones.stream().filter(persona -> persona.getNom().contains("a")).forEach(System.out::println);
         //12 - Llistat de les dates de naixament + dos dies
+        System.out.println("---------------------------------------------");
         System.out.println("\n12 - dates amb dos dies més");
+        System.out.println("Data naixament actual");
+        llista_persones.stream().map(persona -> persona.getDataNaixament()).forEach(System.out::println);
+        System.out.println("----------------------\nData naixement amb 2 dies mes");
         llista_persones.stream().map(persona -> persona.getDataNaixament().plusDays(2)).forEach(System.out::println);
         //13 - Rejovenir dos anys a totes les persones
+        System.out.println("---------------------------------------------");
         System.out.println("\n13 - Rejovenir dos anys a totes les persones");
+        System.out.println("Anys actuals");
+        llista_persones.stream().peek(persona -> persona.setDataNaixament(persona.getDataNaixament())).forEach(System.out::println);
+        System.out.println("--------------------\n2 anys més joves");
         llista_persones.stream().peek(persona -> persona.setDataNaixament(persona.getDataNaixament().plusYears(2))).forEach(System.out::println);
         //llista_persones.stream().forEach(System.out::println);
     }
